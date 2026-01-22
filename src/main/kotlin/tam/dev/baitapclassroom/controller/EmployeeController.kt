@@ -27,19 +27,19 @@ class EmployeeController {
 
     @GetMapping("/list")
     fun showEmployeeList(model: Model): String {
-        // Tạo danh sách 5 nhân viên giả lập
+        // Tạo danh sách 5 nhân viên giả lập với lương theo đô la ($)
         val employeeList = listOf(
-            Employee(id = 1, name = "Nguyen Van A", salary = 15000000.0),
-            Employee(id = 2, name = "Tran Thi B", salary = 18000000.0),
-            Employee(id = 3, name = "Le Van C", salary = 20000000.0),
-            Employee(id = 4, name = "Pham Thi D", salary = 22000000.0),
-            Employee(id = 5, name = "Hoang Van E", salary = 25000000.0)
+            Employee(id = 1, name = "Nguyen Van A", salary = 850.0),
+            Employee(id = 2, name = "Tran Thi B", salary = 1200.0),
+            Employee(id = 3, name = "Le Van C", salary = 950.0),
+            Employee(id = 4, name = "Pham Thi D", salary = 1500.0),
+            Employee(id = 5, name = "Hoang Van E", salary = 750.0)
         )
 
         // Đẩy danh sách nhân viên sang View
         model.addAttribute("employees", employeeList)
 
-        return "employee-list"
+        return "list-employees"
     }
 }
 
