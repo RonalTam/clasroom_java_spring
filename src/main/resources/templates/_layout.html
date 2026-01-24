@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle} ?: 'Spring MVC'">Spring MVC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        /* MENU */
+        .menu {
+            background: #333;
+            padding: 10px 0;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .menu li {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+        }
+
+        .menu a:hover {
+            background: #555;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- MENU FRAGMENT -->
+    <nav class="menu" th:fragment="header">
+        <ul>
+            <li><a th:href="@{/}">Trang Chủ</a></li>
+            <li><a th:href="@{/greeting}">Greeting</a></li>
+            <li><a th:href="@{/calculator}">Calculator</a></li>
+            <li><a th:href="@{/employee/single}">Nhân Viên</a></li>
+            <li><a th:href="@{/employee/list}">Danh Sách NV</a></li>
+            <li><a th:href="@{/employee/add}">Thêm NV</a></li>
+        </ul>
+    </nav>
+
+    <!-- FOOTER FRAGMENT -->
+    <footer class="footer" th:fragment="footer">
+        <p>© 2026 Spring MVC - Bài Tập Thymeleaf Layout</p>
+    </footer>
+</body>
+</html>
