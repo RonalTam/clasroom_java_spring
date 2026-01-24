@@ -28,10 +28,25 @@
         }
 
         input[type="text"],
+        input[type="number"],
+        input[type="email"],
         select {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
+        }
+
+        /* Style cho lỗi validation */
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+        }
+
+        input.error-input,
+        select.error-input {
+            border-color: red;
         }
 
         button {
@@ -58,14 +73,39 @@
 
     <div class="container">
         <h1>Thêm Nhân Viên Mới</h1>
+        <p style="text-align: center; color: #666;">Bài Tập 7: Validation với Spring</p>
 
         <!-- Form với th:object và th:field -->
         <form th:action="@{/employee/add}" th:object="${employee}" method="post">
 
             <!-- Họ tên -->
             <div class="form-group">
-                <label>Họ và Tên:</label>
-                <input type="text" th:field="*{name}" required>
+                <label>Họ và Tên: *</label>
+                <input type="text"
+                       th:field="*{name}"
+                       th:classappend="${#fields.hasErrors('name')} ? 'error-input' : ''">
+                <!-- Hiển thị lỗi validation màu đỏ -->
+                <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+
+            <!-- Lương -->
+            <div class="form-group">
+                <label>Lương ($): *</label>
+                <input type="number"
+                       th:field="*{salary}"
+                       th:classappend="${#fields.hasErrors('salary')} ? 'error-input' : ''">
+                <!-- Hiển thị lỗi validation màu đỏ -->
+                <span class="error" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label>Email: *</label>
+                <input type="email"
+                       th:field="*{email}"
+                       th:classappend="${#fields.hasErrors('email')} ? 'error-input' : ''">
+                <!-- Hiển thị lỗi validation màu đỏ -->
+                <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
             </div>
 
             <!-- Giới tính -->
@@ -97,7 +137,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn-submit">Thêm</button>
+            <button type="submit" class="btn-submit">Thêm Nhân Viên</button>
             <button type="reset" class="btn-reset">Reset</button>
         </form>
     </div>
@@ -105,4 +145,3 @@
     <th:block th:replace="_layout :: footer"></th:block>
 </body>
 </html>
-
